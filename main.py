@@ -7,13 +7,9 @@ from sklearn.metrics import accuracy_score
 # Load data
 @st.cache_data
 def load_data():
-    # Load population density data
+    # Load datasets
     population_density_data = pd.read_csv('population_density_india.csv')
-
-    # Load climate data
     climate_data = pd.read_csv('climate_data_india.csv')
-
-    # Load disease occurrences data
     disease_occurrences_data = pd.read_csv('disease_occurrences_india.csv')
 
     # Merge data
@@ -34,11 +30,11 @@ def train_model(data):
 def main():
     st.title('Disease Occurrence Prediction')
 
-    # Load data
     data = load_data()
 
     # Train model
     model, X_test, y_test = train_model(data)
+
 
     # Display model performance
     y_pred = model.predict(X_test)

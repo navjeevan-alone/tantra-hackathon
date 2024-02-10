@@ -29,24 +29,28 @@ for district in district_names:
 
 # Generate disease-wise occurrences data
 disease_names = ['Chikungunya', 'Dengue', 'Yellow fever', 'Malaria']
+quarters= [0,1,2,3]
 
 # Generate random disease occurrences for each district and year
 disease_data = {
     'District': [],
     'Year': [],
     'Disease': [],
-    'Occurrences': []
+    'Occurrences': [],
+    "NoOfCases":[],
+    "Quarter":[]
 }
 
 for district in district_names:
     for year in years:
-        for disease in disease_names:
-            disease_data['District'].append(district)
-            disease_data['Year'].append(year)
-            disease_data['Disease'].append(disease)
-            # Assuming a binary occurrence (1 for occurrence, 0 for no occurrence)
-            # You can adjust this as per your requirement
-            disease_data['Occurrences'].append(np.random.randint(0, 2))
+        for quarte in quarters:
+            for disease in disease_names:
+                disease_data['District'].append(district)
+                disease_data['Year'].append(year)
+                disease_data['Disease'].append(disease)
+                disease_data['Occurrences'].append(np.random.randint(0, 2))
+                disease_data['NoOfCases'].append(np.random.randint(20,20000))
+                disease_data['quarter'].append(np.random.randint(0,4))
 
 # Create DataFrames
 population_density_df = pd.DataFrame(population_density_data)
